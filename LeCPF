@@ -3,22 +3,24 @@ package Trabalho;
 import java.io.*;
 import java.util.Scanner;
 
-public class LeCPF{
+//TESTEEEEEEEEEEEEEEEEE
+public class LeCPF {
 
-	public static String[] ler(String nomeArquivo){
-		String[] numeros = new String[400];
+	public static String ler(String nomeArquivo){
+		String numeros = "";
 		Scanner scanner;
-		int i = 0;
+		String arquivo = "";
 		
 		try {
 			scanner = new Scanner(new FileReader("src/Arquivos/"+nomeArquivo));
+
 			while (scanner.hasNext()) {
-				numeros[i] = scanner.nextLine();
+				arquivo += scanner.nextLine();
 			}
 		}catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		
-		return numeros;
+		return arquivo;
 	}
 }

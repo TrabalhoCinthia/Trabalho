@@ -1,0 +1,25 @@
+package Trabalho;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class LeCPF {
+
+	public static String ler(String nomeArquivo){
+		String numeros = "";
+		Scanner scanner;
+		String arquivo = "";
+		
+		try {
+			scanner = new Scanner(new FileReader("src/Arquivos/"+nomeArquivo));
+
+			while (scanner.hasNext()) {
+				arquivo += scanner.nextLine();
+			}
+		}catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return arquivo;
+	}
+}

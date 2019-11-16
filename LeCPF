@@ -3,7 +3,6 @@ package Trabalho;
 import java.io.*;
 import java.util.Scanner;
 
-//TESTEEEEEEEEEEEEEEEEE
 public class LeCPF {
 
 	public static String ler(String nomeArquivo){

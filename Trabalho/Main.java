@@ -4,7 +4,6 @@ package Trabalho;
   Essa classe é responsavel por chamar as outras. 
 -----------------------------------------
 */
-*/
 public class Main {
 
 	public static void main(String[] args) {

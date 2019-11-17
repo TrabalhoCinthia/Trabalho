@@ -1,16 +1,16 @@
 package Trabalho;
 /*
---------------------------------------------------
+----------------------------------------- 
   Essa classe é responsavel por chamar as outras. 
---------------------------------------------------
+-----------------------------------------
 */
 public class Main {
 
 	public static void main(String[] args) {
+		LeCPF.inicia_vetores(); //NÃO APAGAR
 		
 	}
 	
-	//Ex 13 a 17
 	private void ex13a17() {
 		//13
 		long inicio_milis = System.currentTimeMillis();
@@ -37,7 +37,7 @@ public class Main {
 				if(arv.pesquisa(cpf))
 					arquivo += cpf+"\n";
 			}
-			CriaArquivo.criaTxt("(ABB)"+tipo+tamanho+".txt", arquivo);
+			//.criaTxt("(ABB)"+tipo+tamanho+".txt", arquivo);
 			
 			final_milis = System.currentTimeMillis();
 			media += final_milis-inicio_milis;
@@ -47,6 +47,7 @@ public class Main {
 		media = media/4;
 		
 		//armazenar a media
+		
 		
 	}
 	

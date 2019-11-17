@@ -6,15 +6,15 @@ package Trabalho;
 	13) Comece a contar o tempo.
 	
 	14) Carregue uma ABB com os registros de um dos arquivos, tendo como chave o CPF.
-		Balanceie a árvore. Cuidado com os CPFs iguais: vocês devem pensar em uma
+		Balanceie a Ã¡rvore. Cuidado com os CPFs iguais: vocÃªs devem pensar em uma
 		maneira eficiente de armazenar os CPFs iguais
 	
-	15) Faça a pesquisa na ABB, usando os 400 registros fornecidos pela professora,
+	15) FaÃ§a a pesquisa na ABB, usando os 400 registros fornecidos pela professora,
 		gerando arquivos no mesmo modelo do item (3).
 
 	16) Repita 4 vezes os processos 14 e 15
 	
-	17) Termine de contar o tempo, faça uma média e armazene este resultado
+	17) Termine de contar o tempo, faÃ§a uma mÃ©dia e armazene este resultado
 */
 
 public class ArvoreABB {
@@ -49,7 +49,7 @@ public class ArvoreABB {
 		 return temp;
 	}
 	
-	public boolean insere (Item elem){
+	public boolean insere (Cliente elem){
 		boolean existe;
 		existe = this.pesquisa(elem.getChave());
 		
@@ -61,7 +61,7 @@ public class ArvoreABB {
 		 }
 	}
 
-	private NoArvore insere (Item elem, NoArvore no){
+	private NoArvore insere (Cliente elem, NoArvore no){
 		NoArvore novo;
 
 		if (no == null){

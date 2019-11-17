@@ -1,10 +1,10 @@
 package Trabalho;
 
 public class NoArvore {
-	private Item info;
+	private Cliente info;
 	private NoArvore dir, esq;
 	
-	public NoArvore (Item _info){
+	public NoArvore (Cliente _info){
 		this.info = _info;
 	}
 	
@@ -20,10 +20,10 @@ public class NoArvore {
 	public void setEsq(NoArvore esq) {
 		this.esq = esq;
 	}
-	public Item getInfo() {
+	public Cliente getInfo() {
 		return info;
 	}
-	public void setInfo(Item novo) {
+	public void setInfo(Cliente novo) {
 		this.info = novo;
 	}
 

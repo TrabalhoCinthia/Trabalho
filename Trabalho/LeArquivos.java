@@ -3,7 +3,7 @@ package Trabalho;
 import java.io.*;
 import java.util.Scanner;
 
-public class LeCPF {
+public class LeArquivos {
 
 	public static long[] cliente_cpfs = criaVetorLong("Cliente.txt");
 	public static Cliente[] cliente10000alea = criaVetor("cliente10000alea.txt");
@@ -48,6 +48,7 @@ public class LeCPF {
 		
 		for(int i=0; i < temp.length; i++) {
 			vet[i] = new Cliente(temp[i]);
+			System.out.println("lendo "+i+" de "+temp.length);
 		}
 		
 		return vet;

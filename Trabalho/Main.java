@@ -7,7 +7,6 @@ package Trabalho;
 public class Main {
 
 	public static void main(String[] args) {
-		LeCPF.inicia_vetores(); //NÃO APAGAR
 		
 	}
 	

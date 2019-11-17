@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class LeCPF {
 
-	public static long[] cliente_cpfs;
+	public static long[] cliente_cpfs = criaVetorLong("Cliente.txt");
 	public static Cliente[] cliente10000alea = criaVetor("cliente10000alea.txt");
 	public static Cliente[] cliente10000inv = criaVetor("cliente10000inv.txt");
 	public static Cliente[] cliente10000ord = criaVetor("cliente10000ord.txt");
@@ -48,6 +48,20 @@ public class LeCPF {
 		
 		for(int i=0; i < temp.length; i++) {
 			vet[i] = new Cliente(temp[i]);
+		}
+		
+		return vet;
+		
+	}
+	
+private static long[] criaVetorLong(String nomeArquivo) {
+		
+		String str = ler(nomeArquivo);
+		String[] temp = str.split("//");
+		long[] vet = new long[temp.length];
+		
+		for(int i=0; i < temp.length; i++) {
+			vet[i] = Long.parseLong(temp[i]);
 		}
 		
 		return vet;

@@ -20,6 +20,10 @@ public class Cliente {
 		this.saldo = Double.parseDouble(temp[2]);
 		this.cpf = Long.parseLong(temp[3]);
 	}
+	
+	public long getChave() {
+		return cpf;
+	}
 
 	@Override
 	public String toString() {

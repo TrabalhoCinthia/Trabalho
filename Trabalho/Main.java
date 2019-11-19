@@ -7,32 +7,40 @@ package Trabalho;
 public class Main {
 
 	public static void main(String[] args) {
-		ex13a17_controle(); //Exercícios 13 a 17 resolvidos ;)
+		ex13a17_controle();
+		
+		
 	}
 	
 	private static void ex13a17_controle() {
 		System.out.println("começou");
 		String medias = "Médias(em milissegundos)\n";
 		
-		medias += "\n50000 Elementos\n";
+		/*medias += "\n50000 Elementos\n";
 		medias += "Aleatório - "+exABB(LeArquivos.cliente50000alea, "ALEA50000")/4.0+"\n";
 		medias += "Invertido - "+exABB(LeArquivos.cliente50000inv, "INV50000")/4.0+"\n";
-		medias += "Ordenado - "+exABB(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n";
+		medias += "Ordenado - "+exABB(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n";*/
 		
 		medias += "\n10000 Elementos\n";
 		medias += "Aleatório - "+exABB(LeArquivos.cliente10000alea, "ALEA10000")/4.0+"\n";
 		medias += "Invertido - "+exABB(LeArquivos.cliente10000inv, "INV10000")/4.0+"\n";
 		medias += "Ordenado - "+exABB(LeArquivos.cliente10000ord, "ORD10000")/4.0+"\n";
 		
+		System.out.println(medias);
+		
 		medias += "\n5000 Elementos\n";
 		medias += "Aleatório - "+exABB(LeArquivos.cliente5000alea, "ALEA5000")/4.0+"\n";
 		medias += "Invertido - "+exABB(LeArquivos.cliente5000inv, "INV5000")/4.0+"\n";
 		medias += "Ordenado - "+exABB(LeArquivos.cliente5000ord, "ORD5000")/4.0+"\n";
 		
+		System.out.println(medias);
+		
 		medias += "\n1000 Elementos\n";
 		medias += "Aleatório - "+exABB(LeArquivos.cliente1000alea, "ALEA1000")/4.0+"\n";
 		medias += "Invertido - "+exABB(LeArquivos.cliente1000inv, "INV1000")/4.0+"\n";
 		medias += "Ordenado - "+exABB(LeArquivos.cliente1000ord, "ORD1000")/4.0+"\n";
+		
+		System.out.println(medias);
 		
 		medias += "\n500 Elementos\n";
 		medias += "Aleatório - "+exABB(LeArquivos.cliente500alea, "ALEA500")/4.0+"\n";

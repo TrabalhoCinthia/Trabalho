@@ -4,9 +4,9 @@ public class Cliente {
 	long agencia;
 	long numero;
 	double saldo;
-	long cpf;
+	Cpf cpf;
 	
-	public Cliente(long agencia, long numero, double saldo, long cpf) {
+	public Cliente(long agencia, long numero, double saldo, Cpf cpf) {
 		this.agencia = agencia;
 		this.numero = numero;
 		this.saldo = saldo;
@@ -18,16 +18,34 @@ public class Cliente {
 		this.agencia = Long.parseLong(temp[0]);
 		this.numero = Long.parseLong(temp[1]);
 		this.saldo = Double.parseDouble(temp[2]);
-		this.cpf = Long.parseLong(temp[3]);
+		this.cpf = new Cpf(Long.parseLong(temp[3]));
 	}
 	
+	//Retorna o valor do Cpf (long)
 	public long getChave() {
+		return cpf.getCpf();
+	}
+	
+	//Retorna o endereço do objeto Cpf
+	public Cpf getCpf() {
 		return cpf;
 	}
+	
+	public long getNum() {
+		return numero;
+	}
+	
+	//Altera o objeto Cpf
+	public void setCpf(Cpf cpf) {
+		this.cpf = cpf;
+	}
+	
 
 	@Override
 	public String toString() {
-		return "Cliente [agencia=" + agencia + ", numero=" + numero + ", saldo=" + saldo + ", cpf=" + cpf + "]";
+		return "Cliente [numero=" + numero 
+				+ " ,cpf=" + cpf.getCpf() + " ,endereco_cpf="+cpf
+				+" ,endereco_cliente="+this.hashCode()+"]";
 	}
 	
 	

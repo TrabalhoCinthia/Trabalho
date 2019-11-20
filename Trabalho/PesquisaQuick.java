@@ -1,26 +1,32 @@
 package Trabalho;
-/*
- ----------------------------------------- 
-   Essa classe deve implementar os numeros 7 a 12 do trabalho.
- -----------------------------------------
-  
-  	7) Comece a contar o tempo.
-	
-	8) Carregue o vetor com um dos arquivos de registros.
-	
-	9) Use o método QuickSort para ordenar por CPF, se houver mais de um CPF igual, eles
-		serão ordenados pelo número da conta. Grave o resultado em um arquivo com o nome
-		contendo o método (QUICK)+tipo(ALEA ou ORD ou INV)+ tamanho.txt.
-	
-	10) Faça a pesquisa binária, usando os 400 registros fornecidos pela professora, gerando
-	arquivos no mesmo modelo do item (3).
-
-	11) Repita 4 vezes os processos 8 a 10
-
-	12) Termine de contar o tempo, faça uma média e armazene este resultado.
- 
- */
 
 public class PesquisaQuick {
+    	public static void ordenaCpf(Cliente[] vet, int start, int end) {
+            if (start < end) {
+                int pIndex = partCpf(vet, start, end);
+                ordenaCpf(vet, start, pIndex - 1);
+                ordenaCpf(vet, pIndex + 1, end);
+            }
+	}
 
+	private static int partCpf(Cliente[] vet, int start, int end) {
+            long pivot = vet[end].getChave();
+            int pIndex = start;
+            
+            for (int i = start; i < end; i++) {
+                if (vet[i].getChave() <= pivot) {
+                    swapAuxCpf(vet, i, pIndex);
+                    pIndex++;
+                }
+            }
+            
+            swapAuxCpf(vet, pIndex, end);
+            return pIndex;
+	}
+
+	private static void swapAuxCpf(Cliente[] vet, int x, int y) {
+            Cliente temp = vet[x];
+            vet[x] = vet[y];
+            vet[y] = temp;
+	}
 }

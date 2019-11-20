@@ -7,19 +7,110 @@ package Trabalho;
 public class Main {
 
 	public static void main(String[] args) {
-		ex13a17_controle();
+                ex7a12_controle();
+                ex13a17_controle();
+	}
+        
+        private static void ex7a12_controle() {
+		String medias = "Médias(em milissegundos)\n";
+		System.out.println("começou");
+               
+		medias += "\n50000 Elementos\n";
+		medias += "Aleatório - "+exQuicksort(LeArquivos.cliente50000alea, "ALEA50000")/4.0+"\n";
+		medias += "Invertido - "+exQuicksort(LeArquivos.cliente50000inv, "INV50000")/4.0+"\n";
+		medias += "Ordenado - "+exQuicksort(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n"; 
+
+		medias += "\n10000 Elementos\n";
+		medias += "Aleatório - "+exQuicksort(LeArquivos.cliente10000alea, "ALEA10000")/4.0+"\n";
+		medias += "Invertido - "+exQuicksort(LeArquivos.cliente10000inv, "INV10000")/4.0+"\n";
+		medias += "Ordenado - "+exQuicksort(LeArquivos.cliente10000ord, "ORD10000")/4.0+"\n"; 
 		
+		System.out.println(medias);
+
+		medias += "\n5000 Elementos\n";
+		medias += "Aleatório - "+exQuicksort(LeArquivos.cliente5000alea, "ALEA5000")/4.0+"\n"; 
+		medias += "Invertido - "+exQuicksort(LeArquivos.cliente5000inv, "INV5000")/4.0+"\n"; 
+		medias += "Ordenado - "+exQuicksort(LeArquivos.cliente5000ord, "ORD5000")/4.0+"\n"; 
 		
+		System.out.println(medias);
+
+		medias += "\n1000 Elementos\n";
+		medias += "Aleatório - "+exQuicksort(LeArquivos.cliente1000alea, "ALEA1000")/4.0+"\n"; 
+		medias += "Invertido - "+exQuicksort(LeArquivos.cliente1000inv, "INV1000")/4.0+"\n"; 
+		medias += "Ordenado - "+exQuicksort(LeArquivos.cliente1000ord, "ORD1000")/4.0+"\n"; 
+		
+		System.out.println(medias);
+            
+		medias += "\n500 Elementos\n";
+		medias += "Aleatório - "+exQuicksort(LeArquivos.cliente500alea.clone(), "ALEA500")/4.0+"\n"; 
+       		medias += "Invertido - "+exQuicksort(LeArquivos.cliente500inv.clone(), "INV500")/4.0+"\n"; 
+                medias += "Ordenado - "+exQuicksort(LeArquivos.cliente500ord.clone(), "ORD500")/4.0+"\n"; 
+                
+		CriaArquivo.criaTxt("(QUICK)Médias.txt", medias);
+		System.out.println(medias);
 	}
 	
+	private static long exQuicksort(Cliente[] vetor, String nome_vetor) {
+		long inicio_milis;
+		long final_milis;
+                long soma = 0;
+		for(int cont=0; cont<4; cont++) {
+		
+                    inicio_milis = System.currentTimeMillis();
+                    
+                    PesquisaQuick.ordenaCpf(vetor, 0, vetor.length - 1);
+                
+                    for (int i = 1; i < vetor.length; i++) {
+                        if (i <= 0) {
+                            i = 1;
+                        }
+
+                        if (vetor[i].getChave() == vetor[i - 1].getChave()) {
+                            if (vetor[i].numero < vetor[i - 1].numero) {
+                                Cliente aux = vetor[i];
+                                vetor[i] = vetor[i - 1];
+                                vetor[i - 1] = aux;
+                                i-=2;
+                            }
+                        }
+                    }     
+                    
+                    final_milis = System.currentTimeMillis();
+                    soma += final_milis - inicio_milis;
+                    System.out.println(" -> Dessa vez: "+(final_milis - inicio_milis)+" inicio: "+inicio_milis);
+                }
+                
+                String conteudo = "";
+                
+                for (int i = 0; i < vetor.length; i++) {
+                   conteudo += vetor[i].toString() + "\n";
+                }
+                
+                CriaArquivo.criaTxt("(QUICK)" + nome_vetor + ".txt", conteudo);
+                
+                String pesquisas = "Resultado pesquisas (" + nome_vetor + ")\n";
+
+                for (int i = 0; i < LeArquivos.cliente_cpfs.length; i++) {
+                    Cliente aux = PesquisaBinaria.pesqCpf(LeArquivos.cliente_cpfs[i], vetor);
+
+                    if (aux != null) {
+                       pesquisas += aux.toString() + "\n";
+                    }
+                }        
+
+                CriaArquivo.criaTxt("(PESQ. BIN)" + nome_vetor + ".txt", pesquisas);                
+                
+		return soma;
+	}
+    
 	private static void ex13a17_controle() {
 		System.out.println("começou");
 		String medias = "Médias(em milissegundos)\n";
 		
-		/*medias += "\n50000 Elementos\n";
+		medias += "\n50000 Elementos\n";
 		medias += "Aleatório - "+exABB(LeArquivos.cliente50000alea, "ALEA50000")/4.0+"\n";
 		medias += "Invertido - "+exABB(LeArquivos.cliente50000inv, "INV50000")/4.0+"\n";
-		medias += "Ordenado - "+exABB(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n";*/
+		medias += "Ordenado - "+exABB(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n";
 		
 		medias += "\n10000 Elementos\n";
 		medias += "Aleatório - "+exABB(LeArquivos.cliente10000alea, "ALEA10000")/4.0+"\n";
@@ -34,7 +125,7 @@ public class Main {
 		medias += "Ordenado - "+exABB(LeArquivos.cliente5000ord, "ORD5000")/4.0+"\n";
 		
 		System.out.println(medias);
-		
+	
 		medias += "\n1000 Elementos\n";
 		medias += "Aleatório - "+exABB(LeArquivos.cliente1000alea, "ALEA1000")/4.0+"\n";
 		medias += "Invertido - "+exABB(LeArquivos.cliente1000inv, "INV1000")/4.0+"\n";
@@ -87,8 +178,7 @@ public class Main {
 			soma += final_milis - inicio_milis;
 			System.out.println(" ->Essa vez: "+(final_milis - inicio_milis)+" inicio: "+inicio_milis);
 		}
+                
 		return soma;
-		
-	}
-	
+	}            
 }

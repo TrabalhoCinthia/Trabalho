@@ -29,7 +29,31 @@ public class PesquisaBinaria {
 				}
 			}
 		}
-		System.out.println(">NÃO ACHOU !!!");
+		System.out.println(">NaO ACHOU !!!");
 			return null;
 	}
+        
+	public static Cliente pesqCpf(long cpf, Cliente[]vet){
+            int meio, esq, dir;
+            esq = 0;
+            dir = vet.length-1;
+            Cliente aux = null;
+            
+            while (esq <= dir){
+                meio = (esq + dir)/2;
+
+                if (cpf == vet[meio].getChave()) {
+                    aux = vet[meio];   
+                    break;
+                } else{
+                    if (cpf < vet[meio].getChave()) {
+                        dir = meio - 1;
+                    }else {
+                        esq = meio + 1;
+                    }
+                }
+            }
+
+            return aux;
+	}        
 }

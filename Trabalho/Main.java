@@ -174,7 +174,7 @@ public class Main {
                     }
                 }        
 
-                CriaArquivo.criaTxt("(PESQ. BIN)" + nome_vetor + ".txt", pesquisas);                
+                CriaArquivo.criaTxt("(QUICK/PESQBIN)" + nome_vetor + ".txt", pesquisas);                
                 
 		return soma;
 	}

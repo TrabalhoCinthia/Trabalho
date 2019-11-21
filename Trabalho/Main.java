@@ -7,67 +7,11 @@ package Trabalho;
 public class Main {
 
 	public static void main(String[] args) {
-		int quantidade = 0;
-		String metodo = "";
-		double tempoIni = 0;
-		double tempoFin = 0;
-		double tempo = 0;
-		
-		for (int i = 1; i < 2 ; i++) {
-			
-			switch(i) {
-			case 1:
-				quantidade = 500;
-				metodo = "ord";
-				break;
-			case 2:
-				metodo = "inv";
-				break;
-			case 3:
-				metodo = "alea";
-				break;
-			case 4:
-				quantidade = 1000;
-				metodo = "ord";
-				break;
-			case 5:
-				metodo = "inv";
-				break;
-			case 6:
-				metodo = "alea";
-				break;
-			case 7:
-				quantidade = 5000;
-				metodo = "ord";
-				break;
-			case 8:
-				metodo = "inv";
-				break;
-			case 9:
-				metodo = "alea";
-				break;
-			case 10:
-				quantidade = 10000;
-				metodo = "ord";
-				break;
-			case 11:
-				metodo = "inv";
-				break;
-			case 12:
-				metodo = "alea";
-				break;
-			}
-			
-		vet = new Cliente[quantidade];
-                
-		//--------- TASK PARA CRIAR UM VETOR DE CLIENTES COM OS DADOS DO TXT -------------------- 	
-		CriaVetor("cliente"+quantidade+metodo+".txt");	
-			
-		}
-	}
 		ex1a6_controle();
 		ex7a12_controle();
                 ex13a17_controle();
+	}
+		
         public static void CriaVetor(String nome) {
 		
 			String numeros = "";

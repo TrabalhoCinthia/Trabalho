@@ -11,7 +11,7 @@ public class LeArquivos {
 	public static Cliente[] cliente500alea = criaVetorDes("cliente500alea.txt",cliente500ord);
 	public static Cliente[] cliente500inv = criaVetorDes("cliente500inv.txt",cliente500ord);
 	
-	public static Cliente[] cliente1000ord = criaVetorOrd("cliente1000ord.txt");
+	/*public static Cliente[] cliente1000ord = criaVetorOrd("cliente1000ord.txt");
 	public static Cliente[] cliente1000alea = criaVetorDes("cliente1000alea.txt",cliente1000ord);
 	public static Cliente[] cliente1000inv = criaVetorDes("cliente1000inv.txt",cliente1000ord);
 
@@ -23,10 +23,10 @@ public class LeArquivos {
 	public static Cliente[] cliente10000alea = criaVetorDes("cliente10000alea.txt",cliente10000ord);
 	public static Cliente[] cliente10000inv = criaVetorDes("cliente10000inv.txt",cliente10000ord);
 	
-	/*public static Cliente[] cliente50000ord = criaVetorOrd("cliente50000ord.txt");
+	public static Cliente[] cliente50000ord = criaVetorOrd("cliente50000ord.txt");
 	public static Cliente[] cliente50000alea = criaVetorDes("cliente50000alea.txt",cliente50000ord);
-	public static Cliente[] cliente50000inv = criaVetorDes("cliente50000inv.txt",cliente50000ord);
-	*/
+	public static Cliente[] cliente50000inv = criaVetorDes("cliente50000inv.txt",cliente50000ord);*/
+	
 	
 	//Retorna o conteudo de um arquivo dado o nome do arquivo
 	public static String ler(String nomeArquivo){

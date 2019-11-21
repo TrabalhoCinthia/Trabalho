@@ -11,8 +11,8 @@ public class Main {
 	public static void main(String[] args) throws IOException{
 		ex1a6_controle();
 		ex7a12_controle();
-                ex13a17_controle();
-                ex18a22_controle();
+        	ex13a17_controle();
+        	ex18a22_controle();
 		ArvoreHashing.ControleHash();
 		
 	}
@@ -21,10 +21,10 @@ public class Main {
 		String medias = "Médias(em milissegundos)\n";
 		System.out.println("começou");
                
-//		medias += "\n50000 Elementos\n";
-//		medias += "Aleatório - "+exHeapsort(LeArquivos.cliente50000alea, "ALEA50000")/4.0+"\n";
-//		medias += "Invertido - "+exHeapsort(LeArquivos.cliente50000inv, "INV50000")/4.0+"\n";
-//		medias += "Ordenado - "+exHeapsort(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n"; 
+		/*medias += "\n50000 Elementos\n";
+		medias += "Aleatório - "+exHeapsort(LeArquivos.cliente50000alea, "ALEA50000")/4.0+"\n";
+		medias += "Invertido - "+exHeapsort(LeArquivos.cliente50000inv, "INV50000")/4.0+"\n";
+		medias += "Ordenado - "+exHeapsort(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n"; 
 
 		medias += "\n10000 Elementos\n";
 		medias += "Aleatório - "+exHeapsort(LeArquivos.cliente10000alea, "ALEA10000")/4.0+"\n";
@@ -43,14 +43,14 @@ public class Main {
 		medias += "\n1000 Elementos\n";
 		medias += "Aleatório - "+exHeapsort(LeArquivos.cliente1000alea, "ALEA1000")/4.0+"\n"; 
 		medias += "Invertido - "+exHeapsort(LeArquivos.cliente1000inv, "INV1000")/4.0+"\n"; 
-		medias += "Ordenado - "+exHeapsort(LeArquivos.cliente1000ord, "ORD1000")/4.0+"\n"; 
+		medias += "Ordenado - "+exHeapsort(LeArquivos.cliente1000ord, "ORD1000")/4.0+"\n"; */
 		
 		System.out.println(medias);
             
 		medias += "\n500 Elementos\n";
 		medias += "Aleatório - "+exHeapsort(LeArquivos.cliente500alea.clone(), "ALEA500")/4.0+"\n"; 
-       		medias += "Invertido - "+exHeapsort(LeArquivos.cliente500inv.clone(), "INV500")/4.0+"\n"; 
-                medias += "Ordenado - "+exHeapsort(LeArquivos.cliente500ord.clone(), "ORD500")/4.0+"\n"; 
+		medias += "Invertido - "+exHeapsort(LeArquivos.cliente500inv.clone(), "INV500")/4.0+"\n"; 
+        medias += "Ordenado - "+exHeapsort(LeArquivos.cliente500ord.clone(), "ORD500")/4.0+"\n"; 
                 
 		CriaArquivo.criaTxt("(HEAP)Médias.txt", medias);
 		System.out.println(medias);
@@ -163,7 +163,7 @@ public class Main {
 //		medias += "Invertido - "+exQuicksort(LeArquivos.cliente50000inv, "INV50000")/4.0+"\n";
 //		medias += "Ordenado - "+exQuicksort(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n"; 
 
-		medias += "\n10000 Elementos\n";
+		/*medias += "\n10000 Elementos\n";
 		medias += "Aleatório - "+exQuicksort(LeArquivos.cliente10000alea, "ALEA10000")/4.0+"\n";
 		medias += "Invertido - "+exQuicksort(LeArquivos.cliente10000inv, "INV10000")/4.0+"\n";
 		medias += "Ordenado - "+exQuicksort(LeArquivos.cliente10000ord, "ORD10000")/4.0+"\n"; 
@@ -180,7 +180,7 @@ public class Main {
 		medias += "\n1000 Elementos\n";
 		medias += "Aleatório - "+exQuicksort(LeArquivos.cliente1000alea, "ALEA1000")/4.0+"\n"; 
 		medias += "Invertido - "+exQuicksort(LeArquivos.cliente1000inv, "INV1000")/4.0+"\n"; 
-		medias += "Ordenado - "+exQuicksort(LeArquivos.cliente1000ord, "ORD1000")/4.0+"\n"; 
+		medias += "Ordenado - "+exQuicksort(LeArquivos.cliente1000ord, "ORD1000")/4.0+"\n"; */
 		
 		System.out.println(medias);
             
@@ -255,7 +255,7 @@ public class Main {
 //		medias += "Invertido - "+exABB(LeArquivos.cliente50000inv, "INV50000")/4.0+"\n";
 //		medias += "Ordenado - "+exABB(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n";
 		
-		medias += "\n10000 Elementos\n";
+		/*medias += "\n10000 Elementos\n";
 		medias += "Aleatório - "+exABB(LeArquivos.cliente10000alea, "ALEA10000")/4.0+"\n";
 		medias += "Invertido - "+exABB(LeArquivos.cliente10000inv, "INV10000")/4.0+"\n";
 		medias += "Ordenado - "+exABB(LeArquivos.cliente10000ord, "ORD10000")/4.0+"\n";
@@ -272,7 +272,7 @@ public class Main {
 		medias += "\n1000 Elementos\n";
 		medias += "Aleatório - "+exABB(LeArquivos.cliente1000alea, "ALEA1000")/4.0+"\n";
 		medias += "Invertido - "+exABB(LeArquivos.cliente1000inv, "INV1000")/4.0+"\n";
-		medias += "Ordenado - "+exABB(LeArquivos.cliente1000ord, "ORD1000")/4.0+"\n";
+		medias += "Ordenado - "+exABB(LeArquivos.cliente1000ord, "ORD1000")/4.0+"\n";*/
 		
 		System.out.println(medias);
 		
@@ -338,7 +338,7 @@ public class Main {
                 System.out.println(medias);
                 
                 medias += "\n1000 Elementos\n";
-		medias += "Aleatório - "+exAVL(LeArquivos.cliente1000alea, "ALEA1000")/4.0+"\n";
+		/*medias += "Aleatório - "+exAVL(LeArquivos.cliente1000alea, "ALEA1000")/4.0+"\n";
 		medias += "Invertido - "+exAVL(LeArquivos.cliente1000inv, "INV1000")/4.0+"\n";
 		medias += "Ordenado - "+exAVL(LeArquivos.cliente1000ord, "ORD1000")/4.0+"\n";
 		
@@ -354,7 +354,7 @@ public class Main {
 		medias += "\n10000 Elementos\n";
 		medias += "Aleatório - "+exAVL(LeArquivos.cliente10000alea, "ALEA10000")/4.0+"\n";
 		medias += "Invertido - "+exAVL(LeArquivos.cliente10000inv, "INV10000")/4.0+"\n";
-		medias += "Ordenado - "+exAVL(LeArquivos.cliente10000ord, "ORD10000")/4.0+"\n";
+		medias += "Ordenado - "+exAVL(LeArquivos.cliente10000ord, "ORD10000")/4.0+"\n";*/
 		
 		System.out.println(medias);
 	

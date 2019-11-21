@@ -42,12 +42,13 @@ public class CriaArquivo {
 
 		try {
 			for (int j = 0; j < arvore.length; j++) {
-				gravarq.print("-----------------\n");
-				gravarq.print(aux2.getInfo().toString()+"\n");
+				if(aux2.getInfo().toString() != null)
+					gravarq.print("\n"+aux2.getInfo().toString()+"\n");
 				aux3 = aux2;
 				while (aux3.getEsq() != null) {
 					aux3 = aux3.getEsq();
-					gravarq.print(aux3.getInfo().toString()+"\n");
+					if(aux3.getInfo().toString() != null)
+						gravarq.print("\n"+aux3.getInfo().toString()+"\n");
 
 				}
 				aux2 = aux2.getDir();

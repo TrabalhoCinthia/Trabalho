@@ -1,5 +1,5 @@
 package Trabalho;
-
+import java.io.IOException;
 
 /*
 ----------------------------------------- 
@@ -8,11 +8,13 @@ package Trabalho;
 */
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 		ex1a6_controle();
 		ex7a12_controle();
                 ex13a17_controle();
                 ex18a22_controle();
+		ArvoreHashing.ControleHash();
+		
 	}
 		
 	private static void ex1a6_controle() {

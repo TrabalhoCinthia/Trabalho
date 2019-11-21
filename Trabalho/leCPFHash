@@ -33,17 +33,21 @@ public class LeCPFHash {
 
 		FileWriter arq = new FileWriter("src\\Arquivos\\" + quantidade + metodo + ".txt");
 		PrintWriter gravarq = new PrintWriter(arq);
+		
+		
+		gravarq.print(media);
 
 		try {
 			for (int j = 0; j < arvore.length; j++) {
-				gravarq.print("-----------------");
-				gravarq.print(aux2.getInfo().toString());
+				gravarq.print("-----------------\n");
+				gravarq.print(aux2.getInfo().toString()+"\n");
 				aux3 = aux2;
 				while (aux3.getEsq() != null) {
 					aux3 = aux3.getEsq();
-					gravarq.print(aux3.getInfo().toString());
+					gravarq.print(aux3.getInfo().toString()+"\n");
 
 				}
+				aux2 = aux2.getDir();
 			}
 
 		} catch (Exception e) {

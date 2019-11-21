@@ -25,6 +25,10 @@ public class Cliente {
 	public long getChave() {
 		return cpf.getCpf();
 	}
+
+        public long getAgencia() {
+            return agencia;
+        }
 	
 	//Retorna o endereço do objeto Cpf
 	public Cpf getCpf() {
@@ -39,15 +43,15 @@ public class Cliente {
 	public void setCpf(Cpf cpf) {
 		this.cpf = cpf;
 	}
-	
 
+        public double getSaldo() {
+            return saldo;
+        }
+        
 	@Override
 	public String toString() {
 		return "Cliente [numero=" + numero 
 				+ " ,cpf=" + cpf.getCpf() + " ,endereco_cpf="+cpf
 				+" ,endereco_cliente="+this.hashCode()+"]";
 	}
-	
-	
-	
 }

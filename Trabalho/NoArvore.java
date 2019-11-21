@@ -3,6 +3,7 @@ package Trabalho;
 public class NoArvore {
 	private Cliente info;
 	private NoArvore dir, esq;
+	private byte fatorBalanceamento;
 	
 	public NoArvore (Cliente _info){
 		this.info = _info;
@@ -26,5 +27,11 @@ public class NoArvore {
 	public void setInfo(Cliente novo) {
 		this.info = novo;
 	}
+	public byte getFatorBalanceamento() {
+                return this.fatorBalanceamento;
+        }
+        public void setFatorBalanceamento(byte fatorBalanceamento) {
+                this.fatorBalanceamento = fatorBalanceamento;
+        }
 
 }

@@ -14,16 +14,16 @@ import java.util.Scanner;
 	24) Carregue um dos arquivos de registro, tendo como chave o CPF, em um Hashing
 		Encadeado.
 
-	25) Faça a pesquisa, usando as 400 registros fornecidos pela professora, nos mesmos
-		moldes do item (3). Não esqueça de gravar os resultados em arquivos.
+	25) FaÃ§a a pesquisa, usando as 400 registros fornecidos pela professora, nos mesmos
+		moldes do item (3). NÃ£o esqueÃ§a de gravar os resultados em arquivos.
 	
 	26) Repita 4 vezes os processos 24 e 25
 	
-	27) Termine de contar o tempo, faça uma média e armazene este resultado.
+	27) Termine de contar o tempo, faÃ§a uma media e armazene este resultado.
 */
 public class ArvoreHashing {
 
-	private static ClienteHash[] vet;
+	private static Cliente[] vet;
 	private static int hash;
 	private static NoArvoreHash[] arvh;
 
@@ -31,78 +31,38 @@ public class ArvoreHashing {
 
 	public static void ControleHash() throws IOException {
 		int quantidade = 0;
-		String metodo = "";
 
-		for (int i = 1; i < 13; i++) {
+		clientes = LeArquivos.cliente_cpfs;
+		
+		Hash(LeArquivos.cliente500inv.clone(), "inv");
+		Hash(LeArquivos.cliente500alea.clone(), "alea");
+		Hash(LeArquivos.cliente500ord.clone(), "ord");
+		
+		/*Hash(LeArquivos.cliente1000inv.clone(), "inv");
+		Hash(LeArquivos.cliente1000alea.clone(), "alea");
+		Hash(LeArquivos.cliente1000ord.clone(), "ord");
+		
+		Hash(LeArquivos.cliente5000inv.clone(), "inv");
+		Hash(LeArquivos.cliente5000alea.clone(), "alea");
+		Hash(LeArquivos.cliente5000ord.clone(), "ord");
 
-			switch (i) {
-			case 1:
-				quantidade = 500;
-				metodo = "ord";
-				break;
-			case 2:
-				metodo = "inv";
-				break;
-			case 3:
-				metodo = "alea";
-				break;
-			case 4:
-				quantidade = 1000;
-				metodo = "ord";
-				break;
-			case 5:
-				metodo = "inv";
-				break;
-			case 6:
-				metodo = "alea";
-				break;
-			case 7:
-				quantidade = 5000;
-				metodo = "ord";
-				break;
-			case 8:
-				metodo = "inv";
-				break;
-			case 9:
-				metodo = "alea";
-				break;
-			case 10:
-				quantidade = 10000;
-				metodo = "ord";
-				break;
-			case 11:
-				metodo = "inv";
-				break;
-			case 12:
-				metodo = "alea";
-				break;
-			case 13:
-				quantidade = 50000;
-				metodo = "ord";
-				break;
-			case 14:
-				metodo = "inv";
-				break;
-			case 15:
-				metodo = "alea";
-				break;		
-			}
+		Hash(LeArquivos.cliente10000inv.clone(), "inv");
+		Hash(LeArquivos.cliente10000alea.clone(), "alea");
+		Hash(LeArquivos.cliente10000ord.clone(), "ord");
 
-			vet = new ClienteHash[quantidade];
-			clientes = new long[400];
-			CriaVetor("cliente" + quantidade + metodo + ".txt");
-			clientes = LeCPFHash.ler("Cliente.txt");
-
-			Hash(quantidade, vet, metodo);
-		}
+		Hash(LeArquivos.cliente50000inv.clone(), "inv");
+		Hash(LeArquivos.cliente50000alea.clone(), "alea");
+		Hash(LeArquivos.cliente50000ord.clone(), "ord");*/
 	}
 
-	public static void Hash(int tamanho, ClienteHash[] i, String metodo) throws IOException {
+	public static void Hash(Cliente[] i, String metodo) throws IOException {
 		double tempoIni = 0;
 		double tempoFin = 0;
 		double tempo = 0;
+		int tamanho = i.length;
+		
 		arvh = new NoArvoreHash[tamanho + tamanho / 10];
-		ClienteHash t = new ClienteHash();
+		Cliente t = new Cliente();
 
 		for (int j = 0; j < tamanho; j++) {
 			arvh[j] = new NoArvoreHash(t);
@@ -130,7 +90,7 @@ public class ArvoreHashing {
 			tempo = tempo + (tempoFin - tempoIni);
 			
 			tempo = tempo/4;
-			LeCPFHash.escrever(arvh, tempo, metodo, tamanho);
+			CriaArquivo.arquivoHash(arvh, tempo, metodo, tamanho);
 			
 			for (int j = 0; j < tamanho; j++) {
 				arvh[j] = new NoArvoreHash(t);
@@ -163,7 +123,7 @@ public class ArvoreHashing {
 
 	}
 
-	public static void Insere(ClienteHash[] vet, int hash) {
+	public static void Insere(Cliente[] vet, int hash) {
 		NoArvoreHash aux = null;
 
 		long cpf = 0;
@@ -171,26 +131,26 @@ public class ArvoreHashing {
 
 		for (int i = 0; i < vet.length; i++) {
 			System.out.println("\n" + i + "---------------------------------------");
-			System.out.println(vet[i].getAgencia() + "\n" + vet[i].getNumero() + "\n" + vet[i].getSaldo() + "\n"
-					+ vet[i].getCpf());
+			System.out.println(vet[i].getAgencia() + "\n" + vet[i].getNum() + "\n" + vet[i].getSaldo() + "\n"
+					+ vet[i].getChave());
 
-			cpf = vet[i].cpf;
+			cpf = vet[i].getChave();
 			index = (int) (cpf % hash);
 
 			System.out.println(index);
 
-			// ve se o nó na posição index existe
+			// ve se o nÃ³ na posiÃ§Ã£o index existe
 
-			if (arvh[index].getInfo().getCpf() == 0) {
-				System.out.println("usuário não possui conta cadastrada");
+			if (arvh[index].getInfo().getChave() == 0) {
+				System.out.println("usuÃ¡rio nÃ£o possui conta cadastrada");
 				arvh[index].setInfo(vet[i]);
 
-			} else if (arvh[index].getInfo().getCpf() == (long) vet[i].getCpf()) {
-				System.out.println("usuário já possui conta cadastrada");
+			} else if (arvh[index].getInfo().getChave() == (long) vet[i].getChave()) {
+				System.out.println("usuÃ¡rio jÃ¡ possui conta cadastrada");
 				aux = arvh[index];
 				try {
 					while (true) {
-						if (aux.getEsq().getInfo().getCpf() > 0) {
+						if (aux.getEsq().getInfo().getChave() > 0) {
 							aux = aux.getEsq();
 						}
 					}
@@ -206,15 +166,15 @@ public class ArvoreHashing {
 			} else {
 				aux = arvh[index];
 
-				while (aux.getInfo().getCpf() != (long) vet[i].getCpf() && aux.getInfo().getCpf() != 0) {
+				while (aux.getInfo().getChave() != (long) vet[i].getChave() && aux.getInfo().getChave() != 0) {
 					aux = aux.getDir();
 				}
 
-				if (aux.getInfo().getCpf() == (long) vet[i].getCpf()) {
-					System.out.println("usuário já possui conta cadastrada");
+				if (aux.getInfo().getChave() == (long) vet[i].getChave()) {
+					System.out.println("usuÃ¡rio jÃ¡ possui conta cadastrada");
 					try {
 						while (true) {
-							if (aux.getEsq().getInfo().getCpf() > 0) {
+							if (aux.getEsq().getInfo().getChave() > 0) {
 								aux = aux.getEsq();
 							}
 						}
@@ -228,7 +188,7 @@ public class ArvoreHashing {
 					}
 
 				} else {
-					System.out.println("Usuario não possui conta cadastrada porém deu azar");
+					System.out.println("Usuario nÃ£o possui conta cadastrada porÃ©m deu azar");
 					aux.setInfo(vet[i]);
 				}
 
@@ -244,7 +204,7 @@ public class ArvoreHashing {
 		int a = 0;
 		NoArvoreHash aux;
 
-		if (arv[index].getInfo().getCpf() == cpf) {
+		if (arv[index].getInfo().getChave() == cpf) {
 			aux = arv[index];
 			try {
 				while (true) {
@@ -257,13 +217,13 @@ public class ArvoreHashing {
 			}
 		}
 
-		else if (arv[index].getInfo().getCpf() != cpf) {
+		else if (arv[index].getInfo().getChave() != cpf) {
 			aux = arv[index];
-			while (aux.getInfo().getCpf() != cpf && aux.getInfo().getCpf() != 0) {
+			while (aux.getInfo().getChave() != cpf && aux.getInfo().getChave() != 0) {
 				aux = aux.getDir();
 			}
-			if (aux.getInfo().getCpf() == 0) {
-				System.out.println("Cpf não cadastrado");
+			if (aux.getInfo().getChave() == 0) {
+				System.out.println("Cpf nÃ£o cadastrado");
 			} else {
 				try {
 					while (true) {
@@ -291,7 +251,7 @@ public class ArvoreHashing {
 
 			while (scanner.hasNext()) {
 				numeros = scanner.nextLine();
-				vet[i] = new ClienteHash(numeros);
+				vet[i] = new Cliente(numeros);
 				i++;
 			}
 

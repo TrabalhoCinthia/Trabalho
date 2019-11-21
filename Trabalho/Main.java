@@ -1,4 +1,6 @@
 package Trabalho;
+
+
 /*
 ----------------------------------------- 
   Essa classe é responsavel por chamar as outras. 
@@ -10,35 +12,17 @@ public class Main {
 		ex1a6_controle();
 		ex7a12_controle();
                 ex13a17_controle();
+                ex18a22_controle();
 	}
 		
-        public static void CriaVetor(String nome) {
-		
-			String numeros = "";
-			Scanner scanner;
-			int i = 0;
-			
-			try {
-				scanner = new Scanner(new FileReader("src/Arquivos/"+nome));
-				while (scanner.hasNext()) {
-					numeros = scanner.nextLine();
-					vet[i] = new Cliente(numeros);
-					i++;
-				}
-				
-			}catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-	}
-	
 	private static void ex1a6_controle() {
 		String medias = "Médias(em milissegundos)\n";
 		System.out.println("começou");
                
-		medias += "\n50000 Elementos\n";
-		medias += "Aleatório - "+exHeapsort(LeArquivos.cliente50000alea, "ALEA50000")/4.0+"\n";
-		medias += "Invertido - "+exHeapsort(LeArquivos.cliente50000inv, "INV50000")/4.0+"\n";
-		medias += "Ordenado - "+exHeapsort(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n"; 
+//		medias += "\n50000 Elementos\n";
+//		medias += "Aleatório - "+exHeapsort(LeArquivos.cliente50000alea, "ALEA50000")/4.0+"\n";
+//		medias += "Invertido - "+exHeapsort(LeArquivos.cliente50000inv, "INV50000")/4.0+"\n";
+//		medias += "Ordenado - "+exHeapsort(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n"; 
 
 		medias += "\n10000 Elementos\n";
 		medias += "Aleatório - "+exHeapsort(LeArquivos.cliente10000alea, "ALEA10000")/4.0+"\n";
@@ -172,10 +156,10 @@ public class Main {
 		String medias = "Médias(em milissegundos)\n";
 		System.out.println("começou");
                
-		medias += "\n50000 Elementos\n";
-		medias += "Aleatório - "+exQuicksort(LeArquivos.cliente50000alea, "ALEA50000")/4.0+"\n";
-		medias += "Invertido - "+exQuicksort(LeArquivos.cliente50000inv, "INV50000")/4.0+"\n";
-		medias += "Ordenado - "+exQuicksort(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n"; 
+//		medias += "\n50000 Elementos\n";
+//		medias += "Aleatório - "+exQuicksort(LeArquivos.cliente50000alea, "ALEA50000")/4.0+"\n";
+//		medias += "Invertido - "+exQuicksort(LeArquivos.cliente50000inv, "INV50000")/4.0+"\n";
+//		medias += "Ordenado - "+exQuicksort(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n"; 
 
 		medias += "\n10000 Elementos\n";
 		medias += "Aleatório - "+exQuicksort(LeArquivos.cliente10000alea, "ALEA10000")/4.0+"\n";
@@ -255,7 +239,7 @@ public class Main {
                     }
                 }        
 
-                CriaArquivo.criaTxt("(QUICK/PESQBIN)" + nome_vetor + ".txt", pesquisas);                
+                CriaArquivo.criaTxt("(QUICK)pesqBin" + nome_vetor + ".txt", pesquisas);                
                 
 		return soma;
 	}
@@ -264,10 +248,10 @@ public class Main {
 		System.out.println("começou");
 		String medias = "Médias(em milissegundos)\n";
 		
-		medias += "\n50000 Elementos\n";
-		medias += "Aleatório - "+exABB(LeArquivos.cliente50000alea, "ALEA50000")/4.0+"\n";
-		medias += "Invertido - "+exABB(LeArquivos.cliente50000inv, "INV50000")/4.0+"\n";
-		medias += "Ordenado - "+exABB(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n";
+//		medias += "\n50000 Elementos\n";
+//		medias += "Aleatório - "+exABB(LeArquivos.cliente50000alea, "ALEA50000")/4.0+"\n";
+//		medias += "Invertido - "+exABB(LeArquivos.cliente50000inv, "INV50000")/4.0+"\n";
+//		medias += "Ordenado - "+exABB(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n";
 		
 		medias += "\n10000 Elementos\n";
 		medias += "Aleatório - "+exABB(LeArquivos.cliente10000alea, "ALEA10000")/4.0+"\n";
@@ -328,6 +312,91 @@ public class Main {
 			}
 			if(conteudo != "") {
 				CriaArquivo.criaTxt("(ABB)"+nome_vetor+".txt", conteudo);
+			}
+			
+			System.out.println(conteudo);
+			final_milis = System.currentTimeMillis();
+			soma += final_milis - inicio_milis;
+			System.out.println(" ->Essa vez: "+(final_milis - inicio_milis)+" inicio: "+inicio_milis);
+		}
+                
+		return soma;
+	}   
+        
+        private static void ex18a22_controle() {
+		System.out.println("começou");
+		String medias = "Médias(em milissegundos)\n";
+	
+		
+                medias += "\n500 Elementos\n";
+		medias += "Aleatório - "+exAVL(LeArquivos.cliente500alea, "ALEA500")/4.0+"\n";
+		medias += "Invertido - "+exAVL(LeArquivos.cliente500inv, "INV500")/4.0+"\n";
+		medias += "Ordenado - "+exAVL(LeArquivos.cliente500ord, "ORD500")/4.0+"\n";
+                
+                System.out.println(medias);
+                
+                medias += "\n1000 Elementos\n";
+		medias += "Aleatório - "+exAVL(LeArquivos.cliente1000alea, "ALEA1000")/4.0+"\n";
+		medias += "Invertido - "+exAVL(LeArquivos.cliente1000inv, "INV1000")/4.0+"\n";
+		medias += "Ordenado - "+exAVL(LeArquivos.cliente1000ord, "ORD1000")/4.0+"\n";
+		
+		System.out.println(medias);
+		
+                medias += "\n5000 Elementos\n";
+		medias += "Aleatório - "+exAVL(LeArquivos.cliente5000alea, "ALEA5000")/4.0+"\n";
+		medias += "Invertido - "+exAVL(LeArquivos.cliente5000inv, "INV5000")/4.0+"\n";
+		medias += "Ordenado - "+exAVL(LeArquivos.cliente5000ord, "ORD5000")/4.0+"\n";
+		
+		System.out.println(medias);
+                
+		medias += "\n10000 Elementos\n";
+		medias += "Aleatório - "+exAVL(LeArquivos.cliente10000alea, "ALEA10000")/4.0+"\n";
+		medias += "Invertido - "+exAVL(LeArquivos.cliente10000inv, "INV10000")/4.0+"\n";
+		medias += "Ordenado - "+exAVL(LeArquivos.cliente10000ord, "ORD10000")/4.0+"\n";
+		
+		System.out.println(medias);
+	
+//              medias += "\n50000 Elementos\n";
+//		medias += "Aleatório - "+exAVL(LeArquivos.cliente50000alea, "ALEA50000")/4.0+"\n";
+//		medias += "Invertido - "+exAVL(LeArquivos.cliente50000inv, "INV50000")/4.0+"\n";
+//		medias += "Ordenado - "+exAVL(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n";
+                
+                System.out.println(medias);
+	
+		
+		CriaArquivo.criaTxt("(AVL)Médias.txt", medias);
+		System.out.println(medias);	
+	}
+
+    
+    private static long exAVL(Cliente[]vetor, String nome_vetor) {
+		
+		long inicio_milis;
+		long final_milis;
+		long[] cpfs = LeArquivos.cliente_cpfs;
+		long soma = 0;
+		
+		//16) repetir 4 vezes
+		for(int cont=0; cont<4; cont++) {
+			
+			//13 contar tempo
+			inicio_milis = System.currentTimeMillis();
+		
+			ArvoreAVL avl = new ArvoreAVL();
+			
+			//14 carregar a AVL
+			for(Cliente c : vetor) {
+				avl.insere(c);
+			}
+			
+			//15 pesquisar os cpfs na AVL e criar arquivo
+			String conteudo="CPFs do Clientes.txt encontrados no "+nome_vetor+".txt \n";
+			for(long cpf : cpfs) {
+				if(avl.pesquisa(cpf))
+					conteudo += cpf+"\n";
+			}
+			if(conteudo != "") {
+				CriaArquivo.criaTxt("(AVL)"+nome_vetor+".txt", conteudo);
 			}
 			
 			System.out.println(conteudo);

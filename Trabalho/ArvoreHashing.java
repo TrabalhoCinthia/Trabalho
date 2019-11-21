@@ -76,6 +76,16 @@ public class ArvoreHashing {
 			case 12:
 				metodo = "alea";
 				break;
+			case 13:
+				quantidade = 50000;
+				metodo = "ord";
+				break;
+			case 14:
+				metodo = "inv";
+				break;
+			case 15:
+				metodo = "alea";
+				break;		
 			}
 
 			vet = new ClienteHash[quantidade];

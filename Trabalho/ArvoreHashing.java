@@ -26,13 +26,14 @@ public class ArvoreHashing {
 	private static ClienteHash[] vet;
 	private static int hash;
 	private static NoArvoreHash[] arvh;
+
 	private static long[] clientes;
 
 	public static void ControleHash() throws IOException {
 		int quantidade = 0;
 		String metodo = "";
 
-		for (int i = 1; i < 2; i++) {
+		for (int i = 1; i < 13; i++) {
 
 			switch (i) {
 			case 1:
@@ -80,12 +81,12 @@ public class ArvoreHashing {
 			vet = new ClienteHash[quantidade];
 			clientes = new long[400];
 			CriaVetor("cliente" + quantidade + metodo + ".txt");
-			clientes = LeCPF.ler("Cliente.txt");
+			clientes = LeCPFHash.ler("Cliente.txt");
 
 			Hash(quantidade, vet, metodo);
 		}
 	}
-	//metodo para marcar o tempo e chamar os outros metodos
+
 	public static void Hash(int tamanho, ClienteHash[] i, String metodo) throws IOException {
 		double tempoIni = 0;
 		double tempoFin = 0;
@@ -117,10 +118,21 @@ public class ArvoreHashing {
 			tempoFin = System.currentTimeMillis();
 
 			tempo = tempo + (tempoFin - tempoIni);
+			
+			tempo = tempo/4;
+			LeCPFHash.escrever(arvh, tempo, metodo, tamanho);
+			
+			for (int j = 0; j < tamanho; j++) {
+				arvh[j] = new NoArvoreHash(t);
+				if (j != 0) {
+					arvh[j - 1].setDir(arvh[j]);
+				}
+
+			}
+			tempo = 0;
 
 		}
-		tempo = tempo/4;
-		LeCPF.escrever(arvh, tempo, metodo, tamanho);
+
 	}
 
 	public static int HashCode(int q) {
@@ -157,14 +169,13 @@ public class ArvoreHashing {
 
 			System.out.println(index);
 
-			//if para inserir em uma celula vazia
+			// ve se o nó na posição index existe
+
 			if (arvh[index].getInfo().getCpf() == 0) {
 				System.out.println("usuário não possui conta cadastrada");
 				arvh[index].setInfo(vet[i]);
 
-			} 
-			//if para quando a celula ja está preenchida pelo mesmo c´pf
-			else if (arvh[index].getInfo().getCpf() == (long) vet[i].getCpf()) {
+			} else if (arvh[index].getInfo().getCpf() == (long) vet[i].getCpf()) {
 				System.out.println("usuário já possui conta cadastrada");
 				aux = arvh[index];
 				try {
@@ -182,9 +193,7 @@ public class ArvoreHashing {
 					System.out.println("Inseriu o Filho");
 				}
 
-			} 
-			//if para quando a celula ja está preenchida por outro cpf
-			else {
+			} else {
 				aux = arvh[index];
 
 				while (aux.getInfo().getCpf() != (long) vet[i].getCpf() && aux.getInfo().getCpf() != 0) {
@@ -217,7 +226,7 @@ public class ArvoreHashing {
 		}
 
 	}
-'	//metodo para procurar o numero no vetor
+
 	public static void procura(NoArvoreHash[] arv, long cpf, int hash) {
 		System.out.println("\n\n\n-------------------------------------------------------");
 
@@ -260,7 +269,7 @@ public class ArvoreHashing {
 		}
 
 	}
-'//metodo para criar o vetor refente ao arquivo txt ultizado
+
 	public static void CriaVetor(String nome) {
 
 		String numeros = "";

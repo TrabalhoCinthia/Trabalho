@@ -65,6 +65,7 @@ public class Main {
 			
 		}
 	}
+		ex1a6_controle();
 		ex7a12_controle();
                 ex13a17_controle();
         public static void CriaVetor(String nome) {
@@ -85,6 +86,121 @@ public class Main {
 				e.printStackTrace();
 			}
 	}
+	
+	private static void ex1a6_controle() {
+		String medias = "Médias(em milissegundos)\n";
+		System.out.println("começou");
+               
+		medias += "\n50000 Elementos\n";
+		medias += "Aleatório - "+exHeapsort(LeArquivos.cliente50000alea, "ALEA50000")/4.0+"\n";
+		medias += "Invertido - "+exHeapsort(LeArquivos.cliente50000inv, "INV50000")/4.0+"\n";
+		medias += "Ordenado - "+exHeapsort(LeArquivos.cliente50000ord, "ORD50000")/4.0+"\n"; 
+
+		medias += "\n10000 Elementos\n";
+		medias += "Aleatório - "+exHeapsort(LeArquivos.cliente10000alea, "ALEA10000")/4.0+"\n";
+		medias += "Invertido - "+exHeapsort(LeArquivos.cliente10000inv, "INV10000")/4.0+"\n";
+		medias += "Ordenado - "+exHeapsort(LeArquivos.cliente10000ord, "ORD10000")/4.0+"\n"; 
+		
+		System.out.println(medias);
+
+		medias += "\n5000 Elementos\n";
+		medias += "Aleatório - "+exHeapsort(LeArquivos.cliente5000alea, "ALEA5000")/4.0+"\n"; 
+		medias += "Invertido - "+exHeapsort(LeArquivos.cliente5000inv, "INV5000")/4.0+"\n"; 
+		medias += "Ordenado - "+exHeapsort(LeArquivos.cliente5000ord, "ORD5000")/4.0+"\n"; 
+		
+		System.out.println(medias);
+
+		medias += "\n1000 Elementos\n";
+		medias += "Aleatório - "+exHeapsort(LeArquivos.cliente1000alea, "ALEA1000")/4.0+"\n"; 
+		medias += "Invertido - "+exHeapsort(LeArquivos.cliente1000inv, "INV1000")/4.0+"\n"; 
+		medias += "Ordenado - "+exHeapsort(LeArquivos.cliente1000ord, "ORD1000")/4.0+"\n"; 
+		
+		System.out.println(medias);
+            
+		medias += "\n500 Elementos\n";
+		medias += "Aleatório - "+exHeapsort(LeArquivos.cliente500alea.clone(), "ALEA500")/4.0+"\n"; 
+       		medias += "Invertido - "+exHeapsort(LeArquivos.cliente500inv.clone(), "INV500")/4.0+"\n"; 
+                medias += "Ordenado - "+exHeapsort(LeArquivos.cliente500ord.clone(), "ORD500")/4.0+"\n"; 
+                
+		CriaArquivo.criaTxt("(HEAP)Médias.txt", medias);
+		System.out.println(medias);
+	}
+	
+	private static long exHeapsort(Cliente[] vetor, String nome_vetor) {
+		long inicio_milis;
+		long final_milis;
+                long soma = 0;
+                
+		for(int cont=0; cont<=4; cont++) {
+                    inicio_milis = System.currentTimeMillis();
+                    
+                    PequisaHeap.heapSort(vetor);     
+                    
+                    for (int i = 1; i < vetor.length; i++) {
+                        if (i <= 0) {
+                            i = 1;
+                        }
+
+                        if (vetor[i].getChave() == vetor[i - 1].getChave()) {
+                            if (vetor[i].numero < vetor[i - 1].numero) {
+                                Cliente aux = vetor[i];
+                                vetor[i] = vetor[i - 1];
+                                vetor[i - 1] = aux;
+                                i-=2;
+                            }
+                        }
+                    }     
+                    
+                    final_milis = System.currentTimeMillis();
+                    soma += final_milis - inicio_milis;
+                    System.out.println(" -> Dessa vez: "+(final_milis - inicio_milis)+" inicio: "+inicio_milis);
+                }
+                
+                String conteudo = "";
+                
+                for (int i = 0; i < vetor.length; i++) {
+                   conteudo += vetor[i].toString() + "\n";
+                }
+                
+                CriaArquivo.criaTxt("(HEAP)" + nome_vetor + ".txt", conteudo);
+                
+                ////////////////////////////////////////////////////////////////
+                
+                String pesquisas = "Resultado pesquisas (" + nome_vetor + ")\n";
+
+                for (int i = 0; i < LeArquivos.cliente_cpfs.length; i++) {
+                    Cliente aux = PesquisaBinaria.pesqCpf(LeArquivos.cliente_cpfs[i], vetor);
+
+                    System.out.print("CPF " + aux.getChave());
+                    
+                    if (aux == null) {
+                        System.out.println(" NÃO ENCONTRADO!\n");
+                    } else {         
+                        System.out.println(" ENCONTRADO!");
+                        
+                        int saldototal = 0;
+                        String tipoconta = "";
+                        
+                        while ((i < vetor.length) && (vetor[i].getChave() == aux.getChave())) {
+                            saldototal += vetor[i].getSaldo();
+                            
+                            if (vetor[i].getNum() < 1000000) {
+                                tipoconta = "POUPANCA";
+                            } else {
+                                tipoconta = "CORRENTE";
+                            }
+                            
+                            System.out.println("AGENCIA " + vetor[i].getAgencia() + "    CONTA " + tipoconta + " " + vetor[i].getNum() + " SALDO " + vetor[i].getSaldo());                                        
+                            
+                            i++;
+                        }
+                        
+                        System.out.println("SALDO TOTAL " + saldototal);
+                    }
+                }
+                
+		return soma;
+	}   	
 	
 	
         private static void ex7a12_controle() {

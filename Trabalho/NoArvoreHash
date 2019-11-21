@@ -1,10 +1,10 @@
 package Trabalho;
 
 public class NoArvoreHash {
-	private ClienteHash info;
+	private Cliente info;
 	private NoArvoreHash dir, esq;
 	
-	public NoArvoreHash (ClienteHash _info){
+	public NoArvoreHash (Cliente _info){
 		this.info = _info;
 	}
 	public NoArvoreHash() {
@@ -24,10 +24,10 @@ public class NoArvoreHash {
 	public void setEsq(NoArvoreHash esq) {
 		this.esq = esq;
 	}
-	public ClienteHash getInfo() {
+	public Cliente getInfo() {
 		return info;
 	}
-	public void setInfo(ClienteHash novo) {
+	public void setInfo(Cliente novo) {
 		this.info = novo;
 	}
 

@@ -126,79 +126,100 @@ public class Main {
 		System.out.println(medias);
 	}
 	
+	 
 	private static long exHeapsort(Cliente[] vetor, String nome_vetor) {
 		long inicio_milis;
 		long final_milis;
-                long soma = 0;
-                
-		for(int cont=0; cont<=4; cont++) {
-                    inicio_milis = System.currentTimeMillis();
-                    
-                    PequisaHeap.heapSort(vetor);     
-                    
-                    for (int i = 1; i < vetor.length; i++) {
-                        if (i <= 0) {
-                            i = 1;
-                        }
+        long soma = 0;
 
-                        if (vetor[i].getChave() == vetor[i - 1].getChave()) {
-                            if (vetor[i].numero < vetor[i - 1].numero) {
-                                Cliente aux = vetor[i];
-                                vetor[i] = vetor[i - 1];
-                                vetor[i - 1] = aux;
-                                i-=2;
-                            }
-                        }
-                    }     
+        //Roda 5 vezes
+		for(int cont=0; cont<=4; cont++) {
+				//1- Contar tempo
+                inicio_milis = System.currentTimeMillis();
+
+                System.out.println("vai fazer heap");
+                
+                //3- Ordenar por cpf
+                PequisaHeap.heapSort(vetor);     
+
+                System.out.println("fez heapsort");
+                
+                //Ordena por num da conta os CPFs repetidos
+                for (int i = 1; i < vetor.length; i++) {
+                    if (i <= 0) {
+                        i = 1;
+                    }
                     
-                    final_milis = System.currentTimeMillis();
-                    soma += final_milis - inicio_milis;
-                    System.out.println(" -> Dessa vez: "+(final_milis - inicio_milis)+" inicio: "+inicio_milis);
-                }
+                    if (vetor[i].getChave() == vetor[i - 1].getChave()) {
+                        if (vetor[i].numero < vetor[i - 1].numero) {
+                            Cliente aux = vetor[i];
+                            vetor[i] = vetor[i - 1];
+                            vetor[i - 1] = aux;
+                            i-=2;
+                        }
+                    }
+                }     
                 
+                System.out.println("ordenou por num da conta");
+
+                //6- Termina de contar o tempo
+                final_milis = System.currentTimeMillis();
+                soma += final_milis - inicio_milis;
+                System.out.println(" -> Dessa vez: "+(final_milis - inicio_milis)+" inicio: "+inicio_milis);
+            }
+
                 String conteudo = "";
-                
+
                 for (int i = 0; i < vetor.length; i++) {
                    conteudo += vetor[i].toString() + "\n";
                 }
-                
+
                 CriaArquivo.criaTxt("(HEAP)" + nome_vetor + ".txt", conteudo);
-                
+
                 ////////////////////////////////////////////////////////////////
+
+                System.out.println("vai fazer as pesquisas");
                 
                 String pesquisas = "Resultado pesquisas (" + nome_vetor + ")\n";
 
                 for (int i = 0; i < LeArquivos.cliente_cpfs.length; i++) {
-                    Cliente aux = PesquisaBinaria.pesqCpf(LeArquivos.cliente_cpfs[i], vetor);
-
-                    System.out.print("CPF " + aux.getChave());
+                	
+                	long cpf = LeArquivos.cliente_cpfs[i];
+                	
+                	System.out.println("pesquisa "+i+" de "+LeArquivos.cliente_cpfs.length);
+                    Cliente[] aux = PesquisaBinaria.pesqCpfMultp(cpf, vetor);
+                    System.out.println("pesquisa concluida");
                     
-                    if (aux == null) {
-                        System.out.println(" NÃO ENCONTRADO!\n");
-                    } else {         
-                        System.out.println(" ENCONTRADO!");
-                        
-                        int saldototal = 0;
-                        String tipoconta = "";
-                        
-                        while ((i < vetor.length) && (vetor[i].getChave() == aux.getChave())) {
-                            saldototal += vetor[i].getSaldo();
-                            
-                            if (vetor[i].getNum() < 1000000) {
-                                tipoconta = "POUPANCA";
-                            } else {
-                                tipoconta = "CORRENTE";
-                            }
-                            
-                            System.out.println("AGENCIA " + vetor[i].getAgencia() + "    CONTA " + tipoconta + " " + vetor[i].getNum() + " SALDO " + vetor[i].getSaldo());                                        
-                            
-                            i++;
-                        }
-                        
-                        System.out.println("SALDO TOTAL " + saldototal);
+                    pesquisas += "\nCPF "+cpf+":\n";
+                    if(aux == null) {
+                    	pesquisas += "NÃO HÁ CLIENTE COM O CPF "+cpf+"\n";
+                    	System.out.println("cpf "+cpf+" nao achou clientes");
+                    }else {
+                    
+                    	double saldo=0;
+                    	String tipo_conta;
+	                    for(int j=0;j<aux.length;j++) {
+	                    	
+	                    	//Se começa com 001 é conta corrente, com 002 é poupança
+	                    	if(aux[j].toString().charAt(3) == '1') 
+	                    		tipo_conta = "Conta Corrente";
+	                    	else
+	                    		tipo_conta = "Conta Poupança";
+	                    	
+	                    	pesquisas += "Agencia "+aux[j].getAgencia()
+	                    			+"\t"+tipo_conta+": "+aux[j].getNum()
+	                    			+"\t Saldo: "+aux[j].getSaldo()+"\n";
+	                    	saldo += aux[j].getSaldo();
+	                    	
+	                    }
+	                    pesquisas += "Saldo total: "+saldo+"\n";
+	                    
                     }
+                    
+
                 }
-                
+                System.out.println("RESULTADO: "+pesquisas);
+                CriaArquivo.criaTxt("(HEAP)Pesq"+nome_vetor+".txt", pesquisas);
 		return soma;
 	}   	
 	
